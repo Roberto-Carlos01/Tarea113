@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dígitos Repetidos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        h1, h2 {
+            margin-top: 30px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input {
+            padding: 5px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dígitos Repetidos</h1>
+    <div class="container">
+        <label for="numero">Ingresa un número mayor a 100:</label>
+        <input type="number" id="numero" min="101">
+        <button onclick="mostrarDigitosRepetidos()">Mostrar Dígitos Repetidos</button>
+        <div class="result" id="resultado"></div>
+    </div>
+
+    <script>
+        function mostrarDigitosRepetidos() {
+            const numero = document.getElementById('numero').value;
+            
+            if (isNaN(numero) || parseInt(numero) <= 100) {
+                document.getElementById('resultado').innerHTML = "Por favor, ingresa un número mayor a 100.";
+                return;
+            }
+
+            const digitos = numero.split('');
+            const repetidos = {};
+            const resultado = [];
+            digitos.forEach(digito => {
+                repetidos[digito] = (repetidos[digito] || 0) + 1;
+            });
+
+            for (const [digito, cantidad] of Object.entries(repetidos)) {
+                if (cantidad > 1) {
+                    resultado.push(digito);
+                }
+            }
+
+            document.getElementById('resultado').innerHTML = `
+                <h3>Resultados:</h3>
+                <p>Número ingresado: ${numero}</p>
+                <p>Dígitos repetidos: ${resultado.length > 0 ? resultado.join(', ') : 'Ninguno'}</p>
+            `;
+        }
+    </script>
+</body>
+</html>

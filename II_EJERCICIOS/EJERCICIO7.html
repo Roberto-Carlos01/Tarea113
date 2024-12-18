@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Capicúa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        h1, h2 {
+            margin-top: 30px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input {
+            padding: 5px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Verificador de Capicúa</h1>
+    <form id="formCapicua">
+        <label for="numero">Introduce un número:</label>
+        <input type="text" id="numero" required>
+        <button type="button" onclick="verificarCapicua()">Verificar</button>
+    </form>
+    <h2>Resultado:</h2>
+    <div id="resultado"></div>
+    <script>
+    function verificarCapicua() {
+        const num = document.getElementById("numero").value;
+        if (!num || isNaN(num)) {
+            alert("Por favor, introduce un número válido.");
+            return;
+        }
+
+        const reversed = num.split('').reverse().join('');
+        const esCapicua = num === reversed;
+
+        document.getElementById("resultado").innerHTML = esCapicua 
+            ? `<p style='color: green;'>ES CAPICÚA</p>` 
+            : `<p style='color: red;'>NO ES CAPICÚA</p>`;
+    }
+    </script>
+</body>
+</html>

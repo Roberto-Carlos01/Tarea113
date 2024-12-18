@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotar Dígitos Pares</title>
+    <style>
+       body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        h1, h2 {
+            margin-top: 30px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input {
+            padding: 5px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rotar Dígitos Pares</h1>
+    <div class="container">
+        <label for="numero">Ingresa un número mayor o igual a 6 dígitos:</label>
+        <input type="text" id="numero">
+        <button onclick="rotarPares()">Rotar Dígitos Pares</button>
+        <div class="result" id="resultado"></div>
+    </div>
+
+    <script>
+        function rotarPares() {
+            const numero = document.getElementById('numero').value;
+
+            if (!/^\d{6,}$/.test(numero)) {
+                document.getElementById('resultado').innerHTML = "Por favor, ingresa un número con al menos 6 dígitos.";
+                return;
+            }
+
+            const digitos = numero.split('');
+            const pares = digitos.filter(d => d % 2 === 0);
+            if (pares.length > 1) {
+                pares.unshift(pares.pop());
+            }
+
+            let indicePares = 0;
+            const resultado = digitos.map(d => (d % 2 === 0 ? pares[indicePares++] : d)).join('');
+
+            document.getElementById('resultado').innerHTML = `
+                <h3>Resultado:</h3>
+                <p>Número original: ${numero}</p>
+                <p>Número rotado: ${resultado}</p>
+            `;
+        }
+    </script>
+</body>
+</html>

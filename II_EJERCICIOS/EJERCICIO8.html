@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Números Primos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        h1, h2 {
+            margin-top: 30px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input {
+            padding: 5px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-size: 18px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Verificador de Números Primos</h1>
+    <form id="formPrimo">
+        <label for="numero">Introduce un número:</label>
+        <input type="number" id="numero" required>
+        <button type="button" onclick="verificarPrimo()">Verificar</button>
+    </form>
+    <h2>Resultado:</h2>
+    <div id="resultado"></div>
+    <script>
+    function verificarPrimo() {
+        const num = parseInt(document.getElementById("numero").value);
+        if (isNaN(num) || num <= 1) {
+            document.getElementById("resultado").innerHTML = `<p style='color: red;'>NO ES PRIMO</p>`;
+            return;
+        }
+
+        for (let i = 2; i < num; i++) {
+            if (num % i === 0) {
+                document.getElementById("resultado").innerHTML = `<p style='color: red;'>NO ES PRIMO</p>`;
+                return;
+            }
+        }
+
+        document.getElementById("resultado").innerHTML = `<p style='color: green;'>ES PRIMO</p>`;
+    }
+    </script>
+</body>
+</html>

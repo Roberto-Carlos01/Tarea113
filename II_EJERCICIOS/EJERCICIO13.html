@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invertir Cadena de Caracteres</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        h1, h2 {
+            margin-top: 30px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input {
+            padding: 5px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Invertir Cadena de Caracteres</h1>
+    <form id="formInvertir">
+        <label for="cadena">Introduce una cadena:</label>
+        <input type="text" id="cadena" required>
+        <button type="button" onclick="invertirCadena()">Invertir</button>
+    </form>
+    <h2>Resultado:</h2>
+    <div id="resultado"></div>
+    <script>
+    function invertirCadena() {
+        const cadena = document.getElementById("cadena").value;
+        const cadenaInvertida = cadena.split('').reverse().join('');
+        document.getElementById("resultado").innerHTML = `<p>${cadenaInvertida}</p>`;
+    }
+    </script>
+</body>
+</html>

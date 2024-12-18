@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factoriales y Suma</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        h1, h2 {
+            margin-top: 30px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input {
+            padding: 5px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Generar Factoriales y Suma</h1>
+    <div class="container">
+        <label for="numero">Ingresa un número:</label>
+        <input type="number" id="numero" min="1">
+        <button onclick="calcularFactoriales()">Calcular</button>
+        <div class="result" id="resultado"></div>
+    </div>
+
+    <script>
+        function calcularFactoriales() {
+            const numero = parseInt(document.getElementById('numero').value);
+            if (isNaN(numero) || numero <= 0) {
+                document.getElementById('resultado').innerHTML = "Por favor, ingresa un número válido mayor a 0.";
+                return;
+            }
+
+            let factoriales = [];
+            let suma = 0;
+            let factorial = 1;
+
+            for (let i = 1; i <= numero; i++) {
+                factorial *= i;
+                factoriales.push(`${i}! = ${factorial}`);
+                suma += factorial;
+            }
+
+            const resultadoHTML =`
+                <h3>Resultados:</h3>
+                <p><strong>Factoriales:</strong></p>
+                <ul>${factoriales.map(f => `<li>${f}</li>`).join('')}</ul>
+                <p><strong>Suma:</strong> ${suma}</p>
+            `;
+
+            document.getElementById('resultado').innerHTML = resultadoHTML;
+        }
+    </script>
+</body>
+</html>

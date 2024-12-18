@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Palíndromos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        h1, h2 {
+            margin-top: 30px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input {
+            padding: 5px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Verificador de Palíndromos</h1>
+    <form id="formPalindromo">
+        <label for="palabra">Introduce una palabra o frase:</label>
+        <input type="text" id="palabra" required>
+        <button type="button" onclick="verificarPalindromo()">Verificar</button>
+    </form>
+    <h2>Resultado:</h2>
+    <div id="resultado"></div>
+    <script>
+    function verificarPalindromo() {
+        const palabra = document.getElementById("palabra").value.trim().toLowerCase();
+  
+        const palabraLimpia = palabra.replace(/[^a-záéíóúüñ]/g, '');
+
+        const esPalindromo = palabraLimpia === palabraLimpia.split('').reverse().join('');
+ 
+        const resultado = esPalindromo ? "¡Es un palíndromo!" : "No es un palíndromo.";
+        document.getElementById("resultado").innerHTML = `<p>${resultado}</p>`;
+    }
+    </script>
+</body>
+</html>

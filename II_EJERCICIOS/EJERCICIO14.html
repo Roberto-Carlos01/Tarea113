@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        h1, h2 {
+            margin-top: 30px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input, select, button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculadora</h1>
+    <form id="formCalculadora">
+        <input type="number" id="numero1" placeholder="Número 1" required>
+        <input type="number" id="numero2" placeholder="Número 2" required>
+        <select id="operacion">
+            <option value="sumar">Suma (+)</option>
+            <option value="restar">Resta (-)</option>
+            <option value="multiplicar">Multiplicación (*)</option>
+            <option value="dividir">División (/)</option>
+            <option value="factorial">Factorial (!)</option>
+            <option value="potencia">Potencia (x^y)</option>
+        </select>
+        <button type="button" onclick="realizarOperacion()">Calcular</button>
+    </form>
+    <h2>Resultado:</h2>
+    <div id="resultado"></div>
+
+    <script>
+    function realizarOperacion() {
+        const num1 = parseFloat(document.getElementById("numero1").value);
+        const num2 = parseFloat(document.getElementById("numero2").value);
+        const operacion = document.getElementById("operacion").value;
+        let resultado;
+
+        function factorial(n) {
+            if (n === 0 || n === 1) return 1;
+            return n * factorial(n - 1);
+        }
+
+        switch (operacion) {
+            case "sumar":
+                resultado = num1 + num2;
+                break;
+            case "restar":
+                resultado = num1 - num2;
+                break;
+            case "multiplicar":
+                resultado = num1 * num2;
+                break;
+            case "dividir":
+                if (num2 === 0) {
+                    resultado = "Error: No se puede dividir entre cero";
+                } else {
+                    resultado = num1 / num2;
+                }
+                break;
+            case "factorial":
+                if (Number.isInteger(num1) && num1 >= 0) {
+                    resultado = factorial(num1);
+                } else {
+                    resultado = "Error: El número debe ser entero y positivo para factorial";
+                }
+                break;
+            case "potencia":
+                resultado = Math.pow(num1, num2);
+                break;
+            default:
+                resultado = "Operación no válida";
+                break;
+        }
+
+        document.getElementById("resultado").innerHTML = `<p>${resultado}</p>`;
+    }
+    </script>
+</body>
+</html>

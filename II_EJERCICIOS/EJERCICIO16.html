@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matriz de Pascal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        h1, h2 {
+            margin-top: 30px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input {
+            padding: 5px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-size: 18px;
+            white-space: pre;
+            text-align: left;
+            display: inline-block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Generador de la Matriz de Pascal</h1>
+    <form id="formPascal">
+        <label for="numero">Introduce el número de filas:</label>
+        <input type="number" id="numero" min="1" required>
+        <button type="button" onclick="generarMatrizPascal()">Generar</button>
+    </form>
+    <h2>Resultado:</h2>
+    <div id="resultado"></div>
+
+    <script>
+    function generarMatrizPascal() {
+        const filas = parseInt(document.getElementById("numero").value);
+        if (isNaN(filas) || filas < 1) {
+            document.getElementById("resultado").innerHTML = "<p>Por favor, ingresa un número válido de filas (mayor o igual a 1).</p>";
+            return;
+        }
+        let matrizPascal = [];
+
+        for (let i = 0; i < filas; i++) {
+            matrizPascal[i] = [];
+            for (let j = 0; j <= i; j++) {
+                if (j === 0 || j === i) {
+                    matrizPascal[i][j] = 1; 
+                } else {
+                    matrizPascal[i][j] = matrizPascal[i - 1][j - 1] + matrizPascal[i - 1][j]; 
+                }
+            }
+        }
+
+        let resultado = "";
+        for (let i = 0; i < matrizPascal.length; i++) {
+            resultado += matrizPascal[i].join(" ") + "\n";
+        }
+
+        document.getElementById("resultado").innerHTML = `<pre>${resultado}</pre>`;
+    }
+    </script>
+</body>
+</html>
+

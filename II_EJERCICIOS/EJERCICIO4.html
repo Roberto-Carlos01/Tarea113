@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Generador de Serie</title>
+  <style>
+   body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        h1, h2 {
+            margin-top: 30px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input {
+            padding: 5px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 5px 10px;
+            font-size: 16px;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+  </style>
+</head>
+<body>
+  <h1>Rotar Número</h1>
+  <label for="input-number">Introduce un número N:</label>
+  <input type="text" id="input-number">
+  <button onclick="rotateNumber()">Rotar Numero</button>
+  <p id="result"></p>
+
+  <script>
+    function rotateNumber() {
+      const inputNumber = document.getElementById("input-number").value;
+      const rotatedNumber = rotateDigits(inputNumber);
+      document.getElementById("result").textContent = `Numero Rotado: ${rotatedNumber}`;
+    }
+
+    function rotateDigits(num) {
+      const digits = num.toString().split('');
+      const firstDigit = digits.shift();
+      digits.push(firstDigit);
+      return digits.join('');
+    }
+  </script>
+</body>
+</html>

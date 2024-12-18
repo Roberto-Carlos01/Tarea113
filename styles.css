@@ -1,0 +1,110 @@
+body {
+    margin: 0;
+    font-family: Century Georgia, 'Times New Roman', Times, serif;
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "menu-izquierdo content menu-derecho"
+        "footer footer footer";
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 250px 1fr 250px;
+    height: 10vh;
+}
+
+header {
+    grid-area: header;
+    background-color: #14111f30;
+    color: rgb(26, 2, 2);
+    text-align: center;
+    padding: 0%;
+}
+
+#menu-izquierdo, #menu-derecho {
+    background-color: #bcb6c4;
+    padding: 5px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#menu-izquierdo ul, #menu-derecho ul {
+    list-style: none;
+    padding: 0;
+}
+
+#menu-izquierdo ul li, #menu-derecho ul li {
+    margin-bottom: 10px;
+}
+
+#menu-izquierdo ul li a, #menu-derecho ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+#menu-izquierdo ul li a:hover, #menu-derecho ul li a:hover {
+    color: #0078d7;
+}
+
+main {
+    grid-area: content;
+    padding: 5px;
+    background-color: #dbaadb;
+}
+
+footer {
+    grid-area: footer;
+    background-color: #31304D;
+    color: rgb(31, 5, 5);
+    text-align: center;
+    padding: 5px;
+}
+
+/* Contenido dinámico */
+.contenido-section {
+    display: block;
+}
+
+#menu-izquierdo ul li a:hover, #menu-derecho ul li a:hover {
+    color: #6e3576;
+}
+
+main {
+    grid-area: content;
+    padding: 5px;
+    background-color: #F0ECE5;
+}
+
+footer {
+    grid-area: footer;
+    background-color: #31304D;
+    color: white;
+    text-align: center;
+    padding: 5px;
+}
+
+/* Contenido dinámico */
+.contenido-section {
+    display: none;
+}
+
+.contenido-section:target {
+    display: block;
+}
+
+#default {
+    display: block;
+}
+a:link{
+    color: aliceblue;
+    font-size: 20px;
+
+}
+a:hover{
+    font-size: 30px;
+    font-family: fantasy;
+    color: aquamarine;
+}
+b#Titulo menu{
+    font-family: fantasy;
+    font-size: 25px;
+    color:#31304D;
+}
